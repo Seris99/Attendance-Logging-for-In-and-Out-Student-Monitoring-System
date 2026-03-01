@@ -1,0 +1,6 @@
+# Core dependencies
+tkinter        # GUI framework (usually comes with Python, but note for clarity)
+
+# Testing dependencies
+pytest         # Unit testing framework
+pytest-cov     # Coverage reporting plugin for pytest
