@@ -54,12 +54,14 @@ class AttendanceApp:
         student = Student(self.entry_id.get(), self.entry_name.get())
         msg = self.logger.log_event(student, "IN")
         self.output.config(text=msg)
+        self.clear_inputs()
         self.load_logs()
 
     def log_out(self):
         student = Student(self.entry_id.get(), self.entry_name.get())
         msg = self.logger.log_event(student, "OUT")
         self.output.config(text=msg)
+        self.clear_inputs()
         self.load_logs()
 
     def load_logs(self):
@@ -70,6 +72,11 @@ class AttendanceApp:
         logs = self.db.get_logs()
         for log in logs:
             self.tree.insert("", "end", values=log)
+
+    def clear_inputs(self):
+        """Clears the input fields after logging."""
+        self.entry_id.delete(0, tk.END)
+        self.entry_name.delete(0, tk.END)
 
 
 if __name__ == "__main__":
